@@ -54,41 +54,45 @@
     <!-- This section is for Text examples -->
     <section>
         <h1>Text</h>
-        <p>This section demonstrates the <b>Inline text semantics</b></p>
+            <p>This section demonstrates the <b>Inline text semantics</b></p>
 
-        <div class="product">
-            <img src="images/sample-image.jpg" alt="Product Image" title="Product model Ib874" />
-            <h2>Tesla Ib874</h2>
-            <p>
-                This car uses the best <b>technology ever seen.</b><br>
-                From <a href="https://en.wikipedia.org/wiki/Tesla_Autopilot" target="_blank"><b>autopilot</b></a> to almost
-                <b>unlimited</b> electric battery for <b>clean</b>, fast and <a href="https://en.wikipedia.org/wiki/Self-driving_car" target="_blank">autonomous driving</a>.
-            </p>
-            <p>
-                Before: <span class="before-price">$999</span>
-            </p>
-            <p>
-                Now: <span class="current-price">$800</span>
-            </p>
-            <button>Buy now</button>
-        </div>
-        <br>
-        <div class="product">
-            <img src="images/sample-image.jpg" alt="Product Image" title="Product model Ib874" />
-            <h2>Tesla IH125</h2>
-            <p>
-                This is a smaller version of the Ib874 but with almost the same capabilities.<br>
-                From <a href="https://en.wikipedia.org/wiki/Tesla_Autopilot" target="_blank"><b>autopilot</b></a> to almost
-                <b>unlimited</b> electric battery for <b>clean</b>, fast and <a href="https://en.wikipedia.org/wiki/Self-driving_car" target="_blank">autonomous driving</a>.
-            </p>
-            <p>
-                Before: <span class="before-price">$500</span>
-            </p>
-            <p>
-                Now: <span class="current-price">$400</span>
-            </p>
-            <button>Buy now</button>
-        </div>
+            <div class="product">
+                <img src="images/sample-image.jpg" alt="Product Image" title="Product model Ib874" />
+                <h2>Tesla Ib874</h2>
+                <p>
+                    This car uses the best <b>technology ever seen.</b><br>
+                    From <a href="https://en.wikipedia.org/wiki/Tesla_Autopilot" target="_blank"><b>autopilot</b></a> to
+                    almost
+                    <b>unlimited</b> electric battery for <b>clean</b>, fast and <a
+                        href="https://en.wikipedia.org/wiki/Self-driving_car" target="_blank">autonomous driving</a>.
+                </p>
+                <p>
+                    Before: <span class="before-price">$999</span>
+                </p>
+                <p>
+                    Now: <span class="current-price">$800</span>
+                </p>
+                <button>Buy now</button>
+            </div>
+            <br>
+            <div class="product">
+                <img src="images/sample-image.jpg" alt="Product Image" title="Product model Ib874" />
+                <h2>Tesla IH125</h2>
+                <p>
+                    This is a smaller version of the Ib874 but with almost the same capabilities.<br>
+                    From <a href="https://en.wikipedia.org/wiki/Tesla_Autopilot" target="_blank"><b>autopilot</b></a> to
+                    almost
+                    <b>unlimited</b> electric battery for <b>clean</b>, fast and <a
+                        href="https://en.wikipedia.org/wiki/Self-driving_car" target="_blank">autonomous driving</a>.
+                </p>
+                <p>
+                    Before: <span class="before-price">$500</span>
+                </p>
+                <p>
+                    Now: <span class="current-price">$400</span>
+                </p>
+                <button>Buy now</button>
+            </div>
     </section>
 
 
@@ -98,15 +102,15 @@
         <h3>Calls procedure checklist</h3>
         <ol>
             <li><b>Answer</b> call</li>
-            <li><b>Ask</b> for insurance</li>
+            <li>Ask for <b>insurance</b></li>
             <li><b>Ask</b> for injuries</li>
-            <li><b>Find</b> a doctor nearby</li>
+            <li>Find a doctor <b>nearby</b></li>
             <li><b>Complaint</b> procedure</li>
-                <ul>
-                    <li>Fill complaint form</li>
-                    <li>Call boss</li>
-                    <li>Hangout</li>
-                </ul>
+            <ol>
+                <li>Fill complaint form</li>
+                <li>Hangout</li>
+                <li>Call boss</li>
+            </ol>
             </li>
         </ol>
         <h3>TODO List</h3>
@@ -114,6 +118,11 @@
             <li>Call Mom</li>
             <li>Buy tickets</li>
             <li>Do homework</li>
+            <ul>
+                <li>English exercises</li>
+                <li>FED exercises</li>
+                <li>Read about HTML syntax</li>
+            </ul>
         </ul>
     </section>
 
@@ -128,6 +137,7 @@
                     <th>Company</th>
                     <th>E-Mail</th>
                     <th>Phone</th>
+                    <th>Age</th>
                 </tr>
             </thead>
             <tbody>
@@ -136,12 +146,21 @@
                     <td>Facebook</td>
                     <td>john.doe@facebook.com</td>
                     <td>1579532154</td>
+                    <td>24</td>
                 </tr>
                 <tr>
                     <td>Karen Roik</td>
                     <td>Google</td>
                     <td>karen.roik@google.com</td>
                     <td>9846121541</td>
+                    <td>29</td>
+                </tr>
+                <tr>
+                    <td>Dann Reely</td>
+                    <td>Microsoft</td>
+                    <td>dann.reely@microsoft.com</td>
+                    <td>7512156543</td>
+                    <td>34</td>
                 </tr>
             </tbody>
         </table>
@@ -161,7 +180,7 @@
                     <th>Decimal Code<br>(R,G,B)</th>
                 </tr>
                 <tr>
-                    <td rowspan="12">Yellow</td>
+                    <td rowspan="11">Yellow</td>
                     <td style="background:lightyellow;">&nbsp;</td>
                     <td>lightyellow</td>
                     <td>#FFFFE0</td>
@@ -172,12 +191,6 @@
                     <td>lemonchiffon</td>
                     <td>#FFFACD</td>
                     <td>rgb(255,250,205)</td>
-                </tr>
-                <tr>
-                    <td style="background:navy;">&nbsp;</td>
-                    <td>navy</td>
-                    <td>#000080</td>
-                    <td>rgb(0,0,128)</td>
                 </tr>
                 <tr>
                     <td style="background:lightgoldenrodyellow;">&nbsp;</td>
