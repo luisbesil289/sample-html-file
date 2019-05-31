@@ -84,6 +84,11 @@
                 name: "Milk",
                 price: 32,
                 quantity: 2
+            },
+            {
+                name: "Cookies",
+                price: 46,
+                quantity: 3
             }
         ];
         const TAXES = 0.24;
@@ -104,15 +109,12 @@
                 row.appendChild(priceCell);
                 const quantityCell = createCellWithText(product.quantity);
                 row.appendChild(quantityCell);
-                const subtotalCell = createCellWithText(0);
+                const subtotalCell = createCellWithText(calculateSubTotal(product.price, product.quantity));
                 row.appendChild(subtotalCell);
                 tableBody.appendChild(row);
             });
         }
-        const calculateSubTotal = () => {
-            // not implemented yet.
-            return 0;
-        }
+        const calculateSubTotal = (precio, cantidad) => (precio*cantidad);
         const calculateDiscount = (subtotal) => {
             /*
             Discount Rules:
