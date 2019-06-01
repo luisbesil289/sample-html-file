@@ -121,18 +121,14 @@
         }
         const calculateSubTotal = () => {
             var sumarSubTotales = 0;
-            products.forEach((producto) => {
-                sumarSubTotales = sumarSubTotales + (producto.price * producto.quantity);
-            });
+            products.forEach((producto) => sumarSubTotales = sumarSubTotales + (producto.price * producto.quantity));
             return sumarSubTotales;
         };
         const calculateDiscount = (subtotal) => {
             var descuentoAplicado = 0;
             var sumarCantidades = 0;
 
-            products.forEach((unProducto) => {
-                sumarCantidades = sumarCantidades + unProducto.quantity;
-            });
+            products.forEach((unProducto) => sumarCantidades = sumarCantidades + unProducto.quantity);
 
             //Discount Rules:
             if (sumarCantidades >= 5) {
