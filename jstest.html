@@ -89,8 +89,14 @@
             name: "Cookies",
             price: 46,
             quantity: 3
+        }, {
+            name: "Marmalade",
+            price: 35,
+            quantity: 1
         }];
+
         const TAXES = 0.24;
+
         const createCellWithText = (text) => {
             var cell = document.createElement("td");
             var cellText = document.createTextNode(text);
@@ -127,31 +133,30 @@
             products.forEach((unProducto) => {
                 sumarCantidades = sumarCantidades + unProducto.quantity;
             });
-            /*
-            Discount Rules:
-            */
-            if (sumarCantidades > 4) {
+
+            //Discount Rules:
+            if (sumarCantidades >= 5) {
                 //If buying more than 5 products, discount is 15% of subtotal.
                 descuentoAplicado = Math.round((subtotal * 1.15) - subtotal);
-            } else if (subTotal > 99) {
+            } else if (subTotal >= 100) {
                 //If subTotal is equal or greater than 100, Discount is 10% of subtotal.
                 descuentoAplicado = Math.round((subtotal * 1.10) - subtotal);
             } else {
                 //Any other case, discount is 5% of subtotal.
                 descuentoAplicado = Math.round((subtotal * 1.5) - subtotal);
             };
-
-
             return descuentoAplicado;
         }
+
         const drawTotals = () => {
             const subTotal = calculateSubTotal();
             const discount = calculateDiscount(subTotal);
             const taxes = Math.round((subTotal - discount) * TAXES);
+            const totalGeneral = Math.round(taxes + subTotal);
             document.querySelector('.totals .subtotal').textContent = subTotal;
             document.querySelector('.totals .discount').textContent = discount;
             document.querySelector('.totals .taxes').textContent = taxes;
-            document.querySelector('.totals .total').textContent = taxes + subTotal;
+            document.querySelector('.totals .total').textContent = totalGeneral;
         }
         const start = () => {
             drawTable();
