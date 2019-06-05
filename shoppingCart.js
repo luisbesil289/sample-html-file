@@ -143,6 +143,7 @@ const start = () => {
         console.log('A new product want to be created, but not implemented yet!');
         event.target.reset(); // Reset form after submission.
     });
+
 }
 
 start();
