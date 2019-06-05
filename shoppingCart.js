@@ -1,5 +1,4 @@
-const products = [
-    {
+const products = [{
         name: "Tomato",
         price: 19,
         quantity: 2
@@ -24,7 +23,7 @@ const products = [
         price: 55,
         quantity: 4
     }
-    
+
 ];
 
 const TAXES = 0.24;
@@ -101,21 +100,22 @@ const drawTable = () => {
 }
 
 
-$('#products-list tbody').on('change', function () {
-    
-    var currow = $(this).closest('input');  
-    var oneCantidad = currow.find('input').text;  
-    console.log('La Cantidad es: '+$(this).closest('input').val()); 
-    console.log('La Cantidad es: '+$(this).closest('input').value);
-    console.log('La Cantidad es: '+$(this).closest('input').text);
-    console.log('La Cantidad es: '+$(this).closest('input').cellText);
-    console.log('La Cantidad es: '+$(this).closest('input').nameCell);
-    drawTotals();
+/* $("#products-list tbody").change(function(event) {
+    $("[type='number']").on(change, drawTotals());
+    console.log('La Cantidad es: ' + $("input[type='number']").val());
+
+});
+ */
+$("input[type='number']").change(function() {
+    if (!this.value) {
+        alert("Please enter some text!");
+    }
+    alert("Please enter some text!");
 });
 
-$('#products-list tbody').on('click', '.btn', function () {
-    var currow = $(this).closest('tr')    
-    var oneProduct = currow.find('td:eq(0)').text();    
+$('#products-list tbody').on('click', '.btn', function() {
+    var currow = $(this).closest('tr')
+    var oneProduct = currow.find('td:eq(0)').text();
     deleteProduct(oneProduct);
     $('#products-list tbody').empty();
     start();
