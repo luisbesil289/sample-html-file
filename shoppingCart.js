@@ -104,8 +104,12 @@ const drawTable = () => {
 $('#products-list tbody').on('change', function () {
     
     var currow = $(this).closest('input');  
-    var oneCantidad = currow.find('input').val();  
-    console.log('La Cantidad es: '+oneCantidad); 
+    var oneCantidad = currow.find('input').text;  
+    console.log('La Cantidad es: '+$(this).closest('input').val()); 
+    console.log('La Cantidad es: '+$(this).closest('input').value);
+    console.log('La Cantidad es: '+$(this).closest('input').text);
+    console.log('La Cantidad es: '+$(this).closest('input').cellText);
+    console.log('La Cantidad es: '+$(this).closest('input').nameCell);
     drawTotals();
 });
 
