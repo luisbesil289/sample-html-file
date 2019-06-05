@@ -131,7 +131,7 @@
             products.forEach((unProducto) => sumarCantidades = sumarCantidades + unProducto.quantity);
 
             //Discount Rules:
-            if (sumarCantidades >= 5) {
+            if (sumarCantidades > 5) {
                 //If buying more than 5 products, discount is 15% of subtotal.
                 descuentoAplicado = Math.round((subtotal * 1.15) - subtotal);
             } else if (subTotal >= 100) {
