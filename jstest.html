@@ -133,13 +133,13 @@
             //Discount Rules:
             if (sumarCantidades > 5) {
                 //If buying more than 5 products, discount is 15% of subtotal.
-                descuentoAplicado = Math.round((subtotal * 1.15) - subtotal);
+                descuentoAplicado = Math.round((subtotal * 1.15) - subtotal).toFixed(2);
             } else if (subTotal >= 100) {
                 //If subTotal is equal or greater than 100, Discount is 10% of subtotal.
-                descuentoAplicado = Math.round((subtotal * 1.10) - subtotal);
+                descuentoAplicado = Math.round((subtotal * 1.10) - subtotal).toFixed(2);
             } else {
                 //Any other case, discount is 5% of subtotal.
-                descuentoAplicado = Math.round((subtotal * 1.5) - subtotal);
+                descuentoAplicado = Math.round((subtotal * 1.5) - subtotal).toFixed(2);
             };
             return descuentoAplicado;
         }
@@ -149,10 +149,10 @@
             const discount = calculateDiscount(subTotal);
             const taxes = Math.round((subTotal - discount) * TAXES);
             const totalGeneral = Math.round(taxes + subTotal);
-            document.querySelector('.totals .subtotal').textContent = subTotal;
+            document.querySelector('.totals .subtotal').textContent = subTotal.toFixed(2);
             document.querySelector('.totals .discount').textContent = discount;
-            document.querySelector('.totals .taxes').textContent = taxes;
-            document.querySelector('.totals .total').textContent = totalGeneral;
+            document.querySelector('.totals .taxes').textContent = taxes.toFixed(2);
+            document.querySelector('.totals .total').textContent = totalGeneral.toFixed(2);
         }
         const start = () => {
             drawTable();

@@ -13,7 +13,18 @@ const products = [
         name: "Milk",
         price: 32,
         quantity: 2
+    },
+    {
+        name: "Cacao",
+        price: 44,
+        quantity: 3
+    },
+    {
+        name: "Bread",
+        price: 55,
+        quantity: 4
     }
+    
 ];
 
 const TAXES = 0.24;
@@ -48,6 +59,7 @@ const createCellWithText = (text) => {
 }
 
 const deleteProduct = (productName) => {
+    console.log(productName);
     const productIndex = products.findIndex(product => product.name === productName);
     products.splice(productIndex, 1);
 }
@@ -81,10 +93,29 @@ const drawTable = () => {
         const deleteButton = createDeleteButton();
         actionsCell.appendChild(deleteButton);
         row.appendChild(actionsCell);
-
         tableBody.appendChild(row);
     });
+
+
+
 }
+
+
+$('#products-list tbody').on('change', function () {
+    
+    var currow = $(this).closest('input');  
+    var oneCantidad = currow.find('input').val();  
+    console.log('La Cantidad es: '+oneCantidad); 
+    drawTotals();
+});
+
+$('#products-list tbody').on('click', '.btn', function () {
+    var currow = $(this).closest('tr')    
+    var oneProduct = currow.find('td:eq(0)').text();    
+    deleteProduct(oneProduct);
+    $('#products-list tbody').empty();
+    start();
+});
 
 const calculateSubTotal = () => {
     return products.reduce((accumulator, product) => {
@@ -111,7 +142,6 @@ const calculateDiscountRate = (subtotal) => {
     } else {
         discountRate = 0.05;
     }
-
     return discountRate;
 }
 
@@ -134,7 +164,6 @@ const drawTotals = () => {
 
 const start = () => {
     drawTable();
-
     drawTotals();
 
     // More info: https://api.jquery.com/submit/
@@ -143,7 +172,6 @@ const start = () => {
         console.log('A new product want to be created, but not implemented yet!');
         event.target.reset(); // Reset form after submission.
     });
-
 }
 
 start();
