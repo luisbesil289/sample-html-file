@@ -184,9 +184,9 @@ const start = () => {
         var vPrice = 12;
         var vQuantity = 2;
     
-        /* var vName = $('#productName').value;
-        var vPrice = $('#unitPrice').value;
-        var vQuantity = $('#quantity').value; */
+        var vName = $("#productName").val;
+        var vPrice = $("#unitPrice").val;
+        var vQuantity = $("#quantity").val;
         
         products.push({name:vName,price:vPrice,quantity:vQuantity});
        
