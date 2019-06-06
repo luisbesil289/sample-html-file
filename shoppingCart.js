@@ -59,7 +59,7 @@ const createCellWithText = (text) => {
 
 
 const updateCantProduct = (productName, productQuantity) => {
-    $.each(products, function() {
+    $.each(products, function () {
         if (this.name == productName) {
             this.quantity = productQuantity;
         }
@@ -109,7 +109,7 @@ $('#products-list tbody').on('change', 'input', function () {
     var cantidad = this.value;
     var currow = $(this).closest('tr');
     var oneProduct = currow.find('td:eq(0)').text();
-    
+
     updateCantProduct(oneProduct, cantidad);
     $('#products-list tbody').empty();
     start();
@@ -180,6 +180,18 @@ const start = () => {
         event.preventDefault(); // Avoid sending the form to a server (not needed here).
         console.log('A new product want to be created, but not implemented yet!');
         event.target.reset(); // Reset form after submission.
+        var vName = "Banana";
+        var vPrice = 12;
+        var vQuantity = 2;
+    
+        /* var vName = $('#productName').value;
+        var vPrice = $('#unitPrice').value;
+        var vQuantity = $('#quantity').value; */
+        
+        products.push({name:vName,price:vPrice,quantity:vQuantity});
+       
+        $('#products-list tbody').empty();
+        start();
     });
 }
 
