@@ -57,17 +57,9 @@ const createCellWithText = (text) => {
     return cell;
 }
 
-const changeQuantity = (productName, productQuantity) => {
-    console.log("Producto - Cantidad: " + productName + " - " + productQuantity);
-    if (products.find(product => product.name === productName)) {
-        console.log("Encontré el producto");
-    } else {
-        console.log("no lo encontré");
-    }
-}
 
 const updateCantProduct = (productName, productQuantity) => {
-    $.each(products, function () {
+    $.each(products, function() {
         if (this.name == productName) {
             this.quantity = productQuantity;
         }
