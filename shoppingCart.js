@@ -1,28 +1,28 @@
 const products = [{
-        name: "Tomato",
-        price: 19,
-        quantity: 2
-    },
-    {
-        name: "Potato",
-        price: 16,
-        quantity: 4
-    },
-    {
-        name: "Milk",
-        price: 32,
-        quantity: 2
-    },
-    {
-        name: "Cacao",
-        price: 44,
-        quantity: 3
-    },
-    {
-        name: "Bread",
-        price: 55,
-        quantity: 4
-    }
+    name: "Tomato",
+    price: 19,
+    quantity: 2
+},
+{
+    name: "Potato",
+    price: 16,
+    quantity: 4
+},
+{
+    name: "Milk",
+    price: 32,
+    quantity: 2
+},
+{
+    name: "Cacao",
+    price: 44,
+    quantity: 3
+},
+{
+    name: "Bread",
+    price: 55,
+    quantity: 4
+}
 
 ];
 
@@ -57,8 +57,24 @@ const createCellWithText = (text) => {
     return cell;
 }
 
+const changeQuantity = (productName, productQuantity) => {
+    console.log("Producto - Cantidad: " + productName + " - " + productQuantity);
+    if (products.find(product => product.name === productName)) {
+        console.log("Encontré el producto");
+    } else {
+        console.log("no lo encontré");
+    }
+}
+
+const updateCantProduct = (productName, productQuantity) => {
+    $.each(products, function () {
+        if (this.name == productName) {
+            this.quantity = productQuantity;
+        }
+    });
+}
+
 const deleteProduct = (productName) => {
-    console.log(productName);
     const productIndex = products.findIndex(product => product.name === productName);
     products.splice(productIndex, 1);
 }
@@ -94,32 +110,29 @@ const drawTable = () => {
         row.appendChild(actionsCell);
         tableBody.appendChild(row);
     });
-
-
-
 }
 
 
-/* $("#products-list tbody").change(function(event) {
-    $("[type='number']").on(change, drawTotals());
-    console.log('La Cantidad es: ' + $("input[type='number']").val());
-
-});
- */
-$("input[type='number']").change(function() {
-    if (!this.value) {
-        alert("Please enter some text!");
-    }
-    alert("Please enter some text!");
+$('#products-list tbody').on('change', 'input', function () {
+    var cantidad = this.value;
+    var currow = $(this).closest('tr');
+    var oneProduct = currow.find('td:eq(0)').text();
+    
+    updateCantProduct(oneProduct, cantidad);
+    $('#products-list tbody').empty();
+    start();
 });
 
-$('#products-list tbody').on('click', '.btn', function() {
+
+$('#products-list tbody').on('click', '.btn', function () {
     var currow = $(this).closest('tr')
     var oneProduct = currow.find('td:eq(0)').text();
     deleteProduct(oneProduct);
     $('#products-list tbody').empty();
     start();
 });
+
+
 
 const calculateSubTotal = () => {
     return products.reduce((accumulator, product) => {
