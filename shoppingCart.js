@@ -1,28 +1,28 @@
 const products = [{
-    name: "Tomato",
-    price: 19,
-    quantity: 2
-},
-{
-    name: "Potato",
-    price: 16,
-    quantity: 4
-},
-{
-    name: "Milk",
-    price: 32,
-    quantity: 2
-},
-{
-    name: "Cacao",
-    price: 44,
-    quantity: 3
-},
-{
-    name: "Bread",
-    price: 55,
-    quantity: 4
-}
+        name: "Tomato",
+        price: 19,
+        quantity: 2
+    },
+    {
+        name: "Potato",
+        price: 16,
+        quantity: 4
+    },
+    {
+        name: "Milk",
+        price: 32,
+        quantity: 2
+    },
+    {
+        name: "Cacao",
+        price: 44,
+        quantity: 3
+    },
+    {
+        name: "Bread",
+        price: 55,
+        quantity: 4
+    }
 
 ];
 
@@ -59,7 +59,7 @@ const createCellWithText = (text) => {
 
 
 const updateCantProduct = (productName, productQuantity) => {
-    $.each(products, function () {
+    $.each(products, function() {
         if (this.name == productName) {
             this.quantity = productQuantity;
         }
@@ -89,6 +89,7 @@ const drawTable = () => {
         const quantityInput = document.createElement('input');
         quantityInput.value = product.quantity;
         quantityInput.type = 'number';
+        quantityInput.min = 0;
         quantityInput.classList.add('form-control')
         quantityCell.appendChild(quantityInput);
         row.appendChild(quantityCell);
@@ -105,7 +106,7 @@ const drawTable = () => {
 }
 
 
-$('#products-list tbody').on('change', 'input', function () {
+$('#products-list tbody').on('change', 'input', function() {
     var cantidad = this.value;
     var currow = $(this).closest('tr');
     var oneProduct = currow.find('td:eq(0)').text();
@@ -115,14 +116,41 @@ $('#products-list tbody').on('change', 'input', function () {
     start();
 });
 
-
-$('#products-list tbody').on('click', '.btn', function () {
+$('#products-list tbody').on('click', '.btn', function() {
     var currow = $(this).closest('tr')
     var oneProduct = currow.find('td:eq(0)').text();
     deleteProduct(oneProduct);
     $('#products-list tbody').empty();
     start();
 });
+
+$('#products-list tbody').on('click', function() {
+    if ($("#products-list>tbody>tr").length < 1) {
+        alert("No hay productos");
+    };
+
+});
+
+
+$('#addToCartForm').on('click', '.btn', function() {
+    var vName = $("#productName").val();
+    var vPrice = $("#unitPrice").val();
+    var vQuantity = $("#quantity").val();
+
+    console.log(vName);
+    console.log(vPrice);
+    console.log(vQuantity);
+
+    if (!isNaN(vPrice)) {
+        products.push({ name: vName, price: vPrice, quantity: vQuantity });
+        alert("Su producto se ha agregado con exito");
+    } else {
+        alert("Ingrese un numero");
+    }
+    $('#products-list tbody').empty();
+    start();
+});
+
 
 
 
@@ -178,20 +206,8 @@ const start = () => {
     // More info: https://api.jquery.com/submit/
     $('#addToCartForm').submit((event) => {
         event.preventDefault(); // Avoid sending the form to a server (not needed here).
-        console.log('A new product want to be created, but not implemented yet!');
+
         event.target.reset(); // Reset form after submission.
-        var vName = "Banana";
-        var vPrice = 12;
-        var vQuantity = 2;
-    
-        var vName = $("#productName").val;
-        var vPrice = $("#unitPrice").val;
-        var vQuantity = $("#quantity").val;
-        
-        products.push({name:vName,price:vPrice,quantity:vQuantity});
-       
-        $('#products-list tbody').empty();
-        start();
     });
 }
 

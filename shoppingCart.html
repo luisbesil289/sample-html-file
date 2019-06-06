@@ -8,37 +8,39 @@
     <meta name="description" content="This is a sample html file">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Google Material Icons: https://google.github.io/material-design-icons/ -->
     <!-- Google Material Icons: https://material.io/tools/icons/?style=baseline -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <style>
         table thead tr th {
             background-color: #ccc;
             padding: 5px;
         }
+        
         table tbody tr td {
             border-bottom: 1px solid black;
             padding: 5px;
         }
+        
         .totals {
             margin-top: 15px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             font-size: 1.2rem;
         }
+        
         .totals .label {
             font-weight: bold;
             text-align: right;
             padding-right: 10px;
         }
+        
         .price::before {
             content: '$ ';
         }
@@ -106,13 +108,11 @@
                     <div class="form-row">
                         <div class="form-group col-sm-12 col-4">
                             <label for="productName">Product name</label>
-                            <input required type="text" class="form-control" id="productName"
-                                placeholder="e.g.: Banana">
+                            <input required type="text" class="form-control" id="productName" placeholder="e.g.: Banana">
                         </div>
                         <div class="form-group col-4">
                             <label for="unitPrice">Unit Price</label>
-                            <input required type="text" class="form-control" id="unitPrice"
-                                placeholder="e.g.: 14.4">
+                            <input required type="text" class="form-control" id="unitPrice" placeholder="e.g.: 14.4">
                         </div>
                         <div class="form-group col-4">
                             <label for="quantity">Quantity</label>
