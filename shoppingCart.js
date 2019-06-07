@@ -73,6 +73,7 @@ const deleteProduct = (productName) => {
 
 const drawTable = () => {
     // Gets products-list tbody element reference and store it on a variable.
+    $("tbody").empty();
     const tableBody = document.querySelector('#products-list tbody');
 
     products.forEach(product => {
@@ -87,6 +88,12 @@ const drawTable = () => {
 
         const quantityCell = document.createElement("td");
         const quantityInput = document.createElement('input');
+        $(quantityInput).on("click", ()=>{
+            console.log("estoy cliqueando el input");
+            console.log($(quantityInput).val());
+            updateCantProduct(product.name, $(quantityInput).val());
+            drawTotals();
+        });
         quantityInput.value = product.quantity;
         quantityInput.type = 'number';
         quantityInput.min = 0;
@@ -99,14 +106,20 @@ const drawTable = () => {
 
         const actionsCell = document.createElement("td");
         const deleteButton = createDeleteButton();
+        $(deleteButton).on('click', ()=>{
+            row.remove;
+            deleteProduct(product.name);
+            drawTable();
+            drawTotals();
+        });
+
         actionsCell.appendChild(deleteButton);
         row.appendChild(actionsCell);
         tableBody.appendChild(row);
     });
 }
 
-
-$('#products-list tbody').on('change', 'input', function() {
+/* $('#products-list tbody').on('change', 'input', function() {
     var cantidad = this.value;
     var currow = $(this).closest('tr');
     var oneProduct = currow.find('td:eq(0)').text();
@@ -115,14 +128,14 @@ $('#products-list tbody').on('change', 'input', function() {
     $('#products-list tbody').empty();
     start();
 });
-
-$('#products-list tbody').on('click', '.btn', function() {
+ */
+/* $('#products-list tbody').on('click', '.btn', function() {
     var currow = $(this).closest('tr')
     var oneProduct = currow.find('td:eq(0)').text();
     deleteProduct(oneProduct);
     $('#products-list tbody').empty();
     start();
-});
+}); */
 
 $('#products-list tbody').on('click', function() {
     if ($("#products-list>tbody>tr").length < 1) {

@@ -17,6 +17,8 @@
     <!-- jQuery -->
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="animals.js"></script>
+    <script src=dog.js></script>
     <style>
         table thead tr th {
             background-color: #ccc;
@@ -50,12 +52,12 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col col-sm-12 col-12">
+            <div class="col col-12">
                 <h1>Shopping Cart</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col col-8 col-md-12">
+            <div class="col col-8">
                 <table id="products-list" class="table">
                     <thead>
                         <tr>
@@ -81,7 +83,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col col-4 col-md-12">
+            <div class="col col-4">
                 <div class="card">
                     <div class="card-header">
                         Totals
@@ -106,7 +108,7 @@
                 <h3>Add new product to cart</h3>
                 <form id="addToCartForm">
                     <div class="form-row">
-                        <div class="form-group col-sm-12 col-4">
+                        <div class="form-group col-4">
                             <label for="productName">Product name</label>
                             <input required type="text" class="form-control" id="productName" placeholder="e.g.: Banana">
                         </div>
