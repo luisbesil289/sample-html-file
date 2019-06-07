@@ -1,28 +1,28 @@
 const products = [{
-        name: "Tomato",
-        price: 19,
-        quantity: 2
-    },
-    {
-        name: "Potato",
-        price: 16,
-        quantity: 4
-    },
-    {
-        name: "Milk",
-        price: 32,
-        quantity: 2
-    },
-    {
-        name: "Cacao",
-        price: 44,
-        quantity: 3
-    },
-    {
-        name: "Bread",
-        price: 55,
-        quantity: 4
-    }
+    name: "Tomato",
+    price: 19,
+    quantity: 2
+},
+{
+    name: "Potato",
+    price: 16,
+    quantity: 4
+},
+{
+    name: "Milk",
+    price: 32,
+    quantity: 2
+},
+{
+    name: "Cacao",
+    price: 44,
+    quantity: 3
+},
+{
+    name: "Bread",
+    price: 55,
+    quantity: 4
+}
 
 ];
 
@@ -58,10 +58,12 @@ const createCellWithText = (text) => {
 }
 
 
-const updateCantProduct = (productName, productQuantity) => {
-    $.each(products, function() {
-        if (this.name == productName) {
+const updateCantProduct = (productName, productQuantity) => {    
+    $.each(products, function () {        
+        if (this.name == productName) {            
             this.quantity = productQuantity;
+            drawTable();
+            drawTotals();          
         }
     });
 }
@@ -72,6 +74,9 @@ const deleteProduct = (productName) => {
 }
 
 const drawTable = () => {
+    if(products.length==0){
+       ALERT("nO HAY ELEMENTOS");
+    };
     // Gets products-list tbody element reference and store it on a variable.
     $("tbody").empty();
     const tableBody = document.querySelector('#products-list tbody');
@@ -85,14 +90,12 @@ const drawTable = () => {
         const priceCell = createCellWithText(product.price);
         priceCell.classList.add('price');
         row.appendChild(priceCell);
-
         const quantityCell = document.createElement("td");
         const quantityInput = document.createElement('input');
-        $(quantityInput).on("click", ()=>{
-            console.log("estoy cliqueando el input");
-            console.log($(quantityInput).val());
-            updateCantProduct(product.name, $(quantityInput).val());
-            drawTotals();
+        $(quantityInput).on("click", () => {
+            updateCantProduct(product.name, $(quantityInput).val());  
+            drawTable();
+            drawTotals();          
         });
         quantityInput.value = product.quantity;
         quantityInput.type = 'number';
@@ -106,7 +109,7 @@ const drawTable = () => {
 
         const actionsCell = document.createElement("td");
         const deleteButton = createDeleteButton();
-        $(deleteButton).on('click', ()=>{
+        $(deleteButton).on('click', () => {
             row.remove;
             deleteProduct(product.name);
             drawTable();
@@ -119,40 +122,11 @@ const drawTable = () => {
     });
 }
 
-/* $('#products-list tbody').on('change', 'input', function() {
-    var cantidad = this.value;
-    var currow = $(this).closest('tr');
-    var oneProduct = currow.find('td:eq(0)').text();
 
-    updateCantProduct(oneProduct, cantidad);
-    $('#products-list tbody').empty();
-    start();
-});
- */
-/* $('#products-list tbody').on('click', '.btn', function() {
-    var currow = $(this).closest('tr')
-    var oneProduct = currow.find('td:eq(0)').text();
-    deleteProduct(oneProduct);
-    $('#products-list tbody').empty();
-    start();
-}); */
-
-$('#products-list tbody').on('click', function() {
-    if ($("#products-list>tbody>tr").length < 1) {
-        alert("No hay productos");
-    };
-
-});
-
-
-$('#addToCartForm').on('click', '.btn', function() {
+$('#addToCartForm').on('click', '.btn', function () {
     var vName = $("#productName").val();
     var vPrice = $("#unitPrice").val();
     var vQuantity = $("#quantity").val();
-
-    console.log(vName);
-    console.log(vPrice);
-    console.log(vQuantity);
 
     if (!isNaN(vPrice)) {
         products.push({ name: vName, price: vPrice, quantity: vQuantity });
@@ -163,8 +137,6 @@ $('#addToCartForm').on('click', '.btn', function() {
     $('#products-list tbody').empty();
     start();
 });
-
-
 
 
 const calculateSubTotal = () => {
